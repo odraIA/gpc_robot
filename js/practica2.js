@@ -1,8 +1,5 @@
-
-
 // Variables globales que van siempre
-var renderer, scene, camera;
-var cameraControls;
+var renderer, scene, camera, cameraControls;
 var angulo = -0.01;
 
 // 1-inicializa 
@@ -22,14 +19,15 @@ function init()
   scene = new THREE.Scene();
 
   var aspectRatio = window.innerWidth / window.innerHeight;
-
-  camera = new THREE.PerspectiveCamera( 75, aspectRatio , 0.1, 1000 );
-  camera.position.set(0, 150, 300);
+  camera = new THREE.PerspectiveCamera( 75, aspectRatio , 0.1, 2000 );
+  camera.position.set(300, 250, 350);
 
   cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
-  cameraControls.target.set( 0, 0, 0 );
+  cameraControls.target.set( 0, 80, 0 );
 
   window.addEventListener('resize', updateAspectRatio );
+  window.addEventListener('keydown', onKeyDown);
+
 }
 
 
@@ -37,11 +35,17 @@ function loadScene()
 {
 	// Añade el objeto grafico a la escena
   // Ángulos de rotación de las distintas articulaciones
-  let anguloVerticalBrazo = 0; // Entre -90 y 90
-  let anguloVerticalRotula = 0; // Entre -45 y 45
-  let anguloHorizontalRotula = 0; // Entre -45 y 45
-  let anguloVerticalPinzas = 0; // Entre 0 y 45
-  let anguloAperturaPinzas = 0; // Entre -15 y 0
+
+  params = {
+    anguloVerticalBrazo: 0,
+    anguloVerticalRotula: 0,
+    anguloHorizontalRotula: 0,
+    anguloVerticalPinzas: 0,
+    anguloAperturaPinzas: 0,
+    alambres: false
+  }
+
+  gui = new lil
 
   // Base
   let baseRadius = 50;
